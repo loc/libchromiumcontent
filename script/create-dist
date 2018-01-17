@@ -453,6 +453,9 @@ def copy_binaries(target_arch, component, create_debug_archive,
   binaries = BINARIES['all'] + BINARIES[TARGET_PLATFORM]
   if component == 'shared_library':
     binaries += BINARIES_SHARED_LIBRARY[TARGET_PLATFORM]
+  if component == 'static_library' and target_arch == 'mips64el':
+    # libchromium_sqlite3 is always shared_library on mips64el.
+    binaries += ['libchromium_sqlite3.so']
   for binary in binaries:
     copy_with_blacklist(target_arch, os.path.join(output_dir, binary), target_dir, ninja)
 

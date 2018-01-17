@@ -1,0 +1,13 @@
+diff --git a/third_party/sqlite/BUILD.gn b/third_party/sqlite/BUILD.gn
+index 4acbd3a..7f761bc 100644
+--- a/third_party/sqlite/BUILD.gn
++++ b/third_party/sqlite/BUILD.gn
+@@ -34,7 +34,7 @@ if (!use_system_sqlite) {
+   }
+ 
+   # "sqlite3" can cause conflicts with the system library.
+-  component("chromium_sqlite3") {
++  shared_library("chromium_sqlite3") {
+     visibility = [ ":*" ]
+     sources = [
+       "amalgamation/config.h",
